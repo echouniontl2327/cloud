@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: service-order
+  output:
+    ansi:
+      #\u63A7\u5236\u53F0\u5F69\u8272\u8F93\u51FA
+      enabled: always
+server:
+  port: 8767
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+feign:
+  hystrix:
+    # \u5F00\u542F\u7194\u65AD\u673A\u5236 -- \u9ED8\u8BA4\u662F\u4E0D\u5F00\u542F\u7684
+    enabled: true
+  compression:
+    request:
+      enabled: true
+      # \u6307\u5B9A\u538B\u7F29\u8BF7\u6C42\u6570\u636E\u7C7B\u578B
+      mime-types: text/xml;application/xml;application/json
+      # \u5982\u679C\u4F20\u8F93\u8D85\u8FC7\u8BE5\u5B57\u8282\uFF0C\u5C31\u5BF9\u5176\u8FDB\u884C\u538B\u7F29
+      min-request-size: 2048
+    response:
+      enabled: true

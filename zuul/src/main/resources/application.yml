@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: zuul
+server:
+  port: 8764
+eureka:
+  client:
+    service-url:
+          defaultZone: http://localhost:8761/eureka/
+zuul:
+  routes:
+  # \u901A\u8FC7serviceID\u6765\u5339\u914D\u7684-\u4E5F\u53EF\u4EE5\u901A\u8FC7URL\u76F4\u63A5\u6765\u5339\u914D\uFF0C\u89C4\u5219\u76F8\u5BF9\u590D\u6742\u4E00\u70B9
+    service-order:
+      path: /service-order/**
+      serviceId: service-order
+    service-product:
+      path: /service-product/**
+      serviceId: service-product
+    service-loadbalance:
+      path: /service-loadbalance/**
+      serviceId: service-loadbalance
+#   \u4E0B\u9762\u662F\u901A\u8FC7URL\u6765\u5339\u914D\u7684
+    service-order-url:
+      path: /service-order-url/**
+      url: http://localhost:8762/
+    service-product-url:
+      path: /service-product-rul/**
+      url: http://localhost:8763/
